@@ -281,7 +281,7 @@ const initDataTable = async () => {
 
 const medico_detalle = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:8000/medico_detalle/");
+        const response = await fetch("https://la-eterna-primavera.onrender.com/medico_detalle/");
         const data = await response.json();
         console.log(data);
 
@@ -312,7 +312,7 @@ const medico_detalle = async () => {
         $(".editar").on("click", function() {
             const medicoId = $(this).closest("tr").data("medico_id");
             if (medicoId) {
-                window.location.href = `http://127.0.0.1:8000/edit_medico/${medicoId}/`;
+                window.location.href = `https://la-eterna-primavera.onrender.com/edit_medico/${medicoId}/`;
             } else {
                 console.error("No se pudo obtener el ID del medico.");
             }
@@ -330,7 +330,7 @@ const medico_detalle = async () => {
 };
 const eliminarMedico = async (medicoId) => {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/eliminar_medico/${medicoId}/`, {
+        const response = await fetch(`https://la-eterna-primavera.onrender.com/eliminar_medico/${medicoId}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

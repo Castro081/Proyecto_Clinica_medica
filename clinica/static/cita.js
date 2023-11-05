@@ -284,7 +284,7 @@ const initDataTable = async () => {
     
 const cita_detalle = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:8000/cita_detalle/");
+        const response = await fetch("https://la-eterna-primavera.onrender.com/cita_detalle/");
         const data = await response.json();
         console.log(data);
 
@@ -316,7 +316,7 @@ const cita_detalle = async () => {
             const citaId = $(this).closest("tr").data("cita_id");
             console.log("Cita ID (antes de eliminarCita):", citaId);
             if (citaId) {
-                window.location.href = `http://127.0.0.1:8000/edit_citas/${citaId}/`;
+                window.location.href = `https://la-eterna-primavera.onrender.com/edit_citas/${citaId}/`;
             } else {
                 console.error("No se pudo obtener el ID de la cita.");
             }
@@ -357,7 +357,7 @@ const eliminarCita = async (citaId) => {
             console.log("Antes de eliminarCita - Cita ID válido:", citaId);
             if (confirm("¿Estás seguro de eliminar esta cita?")) {
                 const response = await $.ajax({
-                    url: `http://127.0.0.1:8000/eliminar_cita/${citaId}/`,
+                    url: `https://la-eterna-primavera.onrender.com/eliminar_cita/${citaId}/`,
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

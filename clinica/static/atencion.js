@@ -286,7 +286,7 @@ const initDataTable = async () => {
 
 const atencion_detalle = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:8000/atencion_detalle/");
+        const response = await fetch("https://la-eterna-primavera.onrender.com/atencion_detalle/");
         const data = await response.json();
         console.log(data);
 
