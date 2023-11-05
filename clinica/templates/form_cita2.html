@@ -1,0 +1,135 @@
+{% extends "form_citas.html" %}
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>Gestión de Citas</h2>
+        <main class="h-full pb-16 overflow-y-auto">
+            <div class="container px-6 mx-auto grid">
+                <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                    Agendar Citas
+                </h2>
+
+                <div class="container">
+                    <form method="post" action="{% url 'form_citas' %}">
+
+                        {% csrf_token %}
+                        <div class="flex items-center">
+                            <label class="mt-4 block text-sm flex-1">
+                                <span value="{{Cita.paciente}}" class="text-gray-700 dark:text-gray-400 mb-1">Nombre del Paciente:</span>
+                                {{ form.paciente }}
+                            </label>
+
+                            <div class="px-6 my-6">
+                                <a type="button"
+                                    class="btn flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                                    href="{% url 'form_paciente' %}">
+                                    Añadir Paciente
+                                    <span class="ml-2" aria-hidden="true">+</span>
+                                </a>
+                            </div>
+                        </div>
+                        <label class="mt-4 block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400 mb-1">Servicio:</span>
+                            <input name="servicio"
+                                value="{{Cita.servicio}}"
+                                class="block mb-1 w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Ingrese el servicio" />
+                        </label>
+
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Fecha de la cita: </span>
+                            <input name="fecha_cita" type="date"
+                                value="{{Cita.fecha_cita}}"
+                                class="block w-2/3 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-input focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                placeholder="Ingrese la fecha de la cita">
+                        </label>
+
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Hora de la Cita: </span>
+                            <input name="hora_cita" type="time"
+                                value="{{Cita.hora_cita}}"
+                                class="block w-2/3 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-input focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                placeholder="Ingrese la hora de la cita">
+                        </label>
+
+                        <div class="mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">
+                                Seleccione el Tipo de Consulta
+                            </span>
+                            <div class="mt-2">
+                                <label class="inline-flex items-center text-gray-500 dark:text-gray-400">
+                                    <input type="radio"
+                                        class="text-red-600 form-radio focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:focus:shadow-outline-gray"
+                                        name="tipo_consulta" value="U" />
+                                    <span class="ml-2">⚠️ Urgente</span>
+                                </label>
+                                <label class="inline-flex items-center ml-6 text-gray-500 dark:text-gray-400">
+                                    <input type="radio"
+                                        class="text-green-600 form-radio focus:border-green-400 focus:outline-none focus:shadow-outline-green dark:focus:shadow-outline-gray"
+                                        name="tipo_consulta" value="P" />
+                                    <span class="ml-2">📅 Programada</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="mt-4 mb-4 text">
+                                <button type="submit" value="{{Cita.tipo_consulta}}" style="background-color: #4CAF50; color: #ffffff;"
+                                    class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                                    id="btnRegistrarCita" data-dashlane-rid="5868274ac12c51c0"
+                                    data-dashlane-label="true" data-form-type="other">
+                                    Registrar Cita
+                                </button>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div>
+
+    </div>
+    </main>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de Citas</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre Paciente</th>
+                        <th>Servicio</th>
+                        <th>Fecha de Cita</th>
+                        <th>Hora de la Cita</th>
+                        <th>Tipo de Consulta</th>
+                        <th>Estado</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in Cita %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.paciente}}</td>
+                        <td>{{c.servicio}}</td>
+                        <td>{{c.fecha_cita}}</td>
+                        <td>{{c.hora_cita}}</td>
+                        <td>{{c.tipo_consulta}}</td>
+                        <td><a href="edicionCita/{{c.paciente}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarCita/{{c.paciente}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{% static 'cita.js' %}"></script>
+</div>
+{% endblock %}

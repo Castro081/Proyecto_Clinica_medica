@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3028/3028573.png">
+  <title>Contacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'tailwind.output.css' %}" />
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <script src="{% static 'init-alpine.js' %}"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+  <script src="{% static 'charts-lines.js' %}"></script>
+  <script src="{% static 'charts-pie.js' %}"></script>
+</head>
+
+<body>
+    <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+      <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
+        <div class="py-4 text-gray-500 dark:text-gray-400">
+          <li class="flex justify-center mx-auto">
+            <button class="rounded-md focus:outline-none focus:shadow-outline-green" @click="toggleTheme" aria-label="Toggle color mode">
+            <template x-if="!dark">
+            </template>
+      
+            </button>
+        </li>
+          <ul class="mt-6">
+            <li class="relative px-6 py-3">
+              <a class="inline-flex items-center w-full text-sm transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{% url 'contacto' %}"
+                  stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                  </path>
+                </svg>
+                <span class="ml-4">Contacto</span>
+              </a>
+            </li>
+            <li class="relative px-6 py-3">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{% url 'historia' %}"
+                  stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18c.6 0 1 .4 1 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4c0-.6.4-1 1-1zm0 0l9 7.5L21 3">
+                  </path>
+                <span class="ml-4">Historia</span>
+              </a>
+            </li>
+            <li class="relative px-6 py-3">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{% url 'otros' %}"
+                  stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path
+                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
+                  </path>
+                </svg>
+                <span class="ml-4">Otros</span>
+              </a>
+            </li>
+            <div class="container mx-auto mt-8">
+
+              <p class="mt-4 text-center text-gray-500 dark:text-gray-400">
+                Por favor, inicia sesión o regístrate para acceder al contenido completo.
+            </p>
+            <div class="mt-8 flex justify-center">
+              <a href="{% url 'inicio_sesion' %}"
+                  class="flex items-center px-3 py-1.5 text-white bg-blue-300 dark:bg-blue-800 border border-blue-200 rounded-md hover:bg-blue-400 dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline-blue">
+                  <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                    Iniciar Sesión
+                  </h4>
+              </a>
+              <a href="{% url 'registro' %}"
+                  class="ml-4 flex items-center px-3 py-1.5 text-white bg-blue-300 dark:bg-blue-800 border border-blue-200 rounded-md hover:bg-blue-400 dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline-blue">
+                  <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                    Registrarse
+                  </h4>
+              </a>
+            </div>
+          </div>
+          </ul>
+        </div>
+      </aside>
+      <main class="h-full pb-16 overflow-y-auto">
+        <div class="container px-6 mx-auto grid">
+          <h4 class="text-center mt-4 mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+            Contáctenos
+        </h4>
+        <div class="grid gap-6 mb-8 md:grid-cols-1">
+          <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 text-center">
+              <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                  Dirección:
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400">
+                  5a Avenida 23-45, Zona 10,
+                  Ciudad de Guatemala, GT
+              </p>
+          </div>
+          <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 text-center">
+            <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                  Teléfono:
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400">
+                  +502 1234-5678
+              </p>
+          </div>
+          <div class="grid gap-6 mb-8 md:grid-cols-1">
+            <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 text-center">
+                <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                    Correo Electrónico:
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400">
+                    info@clinicaeternaprimavera.com
+                </p>
+            </div>
+            <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 text-center">
+              <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                    Horario de Atención:
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Lunes a Viernes: 8:00 AM - 6:00 PM
+                    Sábado: 9:00 AM - 1:00 PM
+                </p>
+            </div>
+        <div class="grid gap-6 mb-8 md:grid-cols-1">
+            <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 text-center">
+                <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+                    Para consultas médicas:
+                </h4>
+                <p class="text-gray-600 dark:text-gray-400">
+                    Programación de citas o cualquier otra información, nuestro equipo de atención al paciente está disponible 
+                    para atenderlo. Puede comunicarse con nosotros por teléfono, correo electrónico.
+                    En La Eterna Primavera, estamos comprometidos con su salud y bienestar. ¡Esperamos poder servirle pronto!
+                </p>
+            </div>
+        </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  </body>
+</html>

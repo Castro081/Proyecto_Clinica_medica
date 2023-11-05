@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4024/4024382.png">
+    <title>Editar Paciente</title>
+</head>
+
+<body>
+    <main class="h-full pb-16 overflow-y-auto">
+        <div class="container px-6 mx-auto grid">
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                Agregar Paciente
+            </h2>
+        </div>
+        <div class="container">
+            <form method="post" action="{% url 'paciente_edit' %}">
+                {% csrf_token %}
+                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                    <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+                        <label class="mt-4 block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400 mb-1">Nombre del Paciente:</span>
+                            <input name="nombre"
+                                class="block mb-1 w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Ingrese el nombre del paciente" />
+                        </label>
+
+                        <label class="mt-4 block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400 mb-1">Apellido del Paciente:</span>
+                            <input name="apellido"
+                                class="block mb-1 w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Ingrese el apellido del paciente" />
+                        </label>
+
+                        <label class="mt-4 block text-sm">
+                            <span class="mt-2 text-gray-700 dark:text-gray-400">DPI:</span>
+                            <input name="dpi" type="text"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Ingrese el número de DPI del paciente"
+                                title="Ingrese un número de DPI válido" />
+                        </label>
+
+                        <label class="mt-4 block text-sm">
+                            <span class="mt-2 text-gray-700 dark:text-gray-400">Direccion:</span>
+                            <input name="direccion" type="text"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                placeholder="Ingrese la direccion del paciente" />
+                        </label>
+
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Fecha de Nacimiento: </span>
+                            <input name="fecha_nacimiento" type="date"
+                                class="block w-2/3 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-input focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                                placeholder="Ingrese su Fecha de Nacimiento" />
+                        </label>
+
+                        <label class="mt-4 block text-sm">
+                            <span class="mt-2 text-gray-700 dark:text-gray-400">Número de Teléfono:</span>
+                            <div class="flex">
+                                <span
+                                    class="inline-flex items-center px-3 border border-r-0 rounded-l-md bg-gray-300 text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                                    +502
+                                </span>
+                                <input name="telefono" type="text" maxlength="8"
+                                    class="block flex-1 w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input rounded-r-md"
+                                    placeholder="Ingrese el número de teléfono" pattern="[0-8,]*"
+                                    title="Ingrese un número de teléfono válido" />
+                            </div>
+                        </label>
+
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Género:</span>
+                            <select name="genero"
+                                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-select">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </label>
+
+                        <label class="block text-sm mt-4">
+                            <span class="text-gray-700 dark:text-gray-400">Correo Electrónico: </span>
+                            <div
+                                class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
+                                <input name="correo" type="email"
+                                    class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                                    placeholder="Ejemplo@gmail.com" />
+                                <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
+                                    <svg class="w-5 h-5 text-green-500" class="w-5 h-5" aria-hidden="true" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+
+                        <div class="mt-4 mb-4 text-center" x-data="{ loading: false }">
+                            <button id="submit-btn" x-on:click="loading = true" type="submit"
+                                class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                                :class="{ 'cursor-not-allowed opacity-50': loading }" :disabled="loading">
+                                <span x-show="!loading">Registrar</span>
+                            </button>
+
+                        </div>
+                    </h4>
+                </div>
+            </form>
+            <div id="message-container" class="mt-4 text-center"></div>
+        </div>
+    </main>
+</body>
+
+</html>

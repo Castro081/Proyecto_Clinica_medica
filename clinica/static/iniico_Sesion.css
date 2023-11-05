@@ -1,0 +1,76 @@
+/* Añade este estilo en tu archivo CSS */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #3498db; /* Azul brillante */
+}
+
+.my-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #222; /* Color de fondo para el formulario */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Sombra ligera */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #444; /* Borde gris */
+    border-radius: 5px;
+    background-color: #333; /* Color de fondo para campos de entrada */
+    color: #fff;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto; /* Centrar el botón */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db; /* Color de botón azul */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave del color de fondo */
+}
+
+.btn:hover {
+    background-color: #2980b9; /* Cambio de color al pasar el ratón */
+}
+
+.btn:active {
+    background-color: transparent; /* Hacer transparente al hacer clic */
+}
+
+.error {
+    color: #e74c3c; /* Rojo */
+}
+
+a {
+    color: #3498db; /* Azul */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

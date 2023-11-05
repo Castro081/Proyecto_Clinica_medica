@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4024/4024382.png">
+    <title>Modificar Cita</title>
+</head>
+<body>
+    <h2 style="text-align: center;">Lista de Citas</h2>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Paciente</th>
+            <th>Servicio</th>
+            <th>Fecha de Cita</th>
+            <th>Hora de Cita</th>
+            <th>Tipo de Consulta</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+            <th>Opciones</th>
+        </tr>
+
+        {% for c in citas %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ c.paciente }}</td>
+            <td>{{ c.servicio }}</td>
+            <td>{{ c.fecha_cita }}</td>
+            <td>{{ c.hora_cita }}</td>
+            <td>{{ c.tipo_consulta }}</td>
+            <td>{{ c.estado }}</td>
+            <td><a href="{% url 'modificar_cita_detail' id=c.id %}">Modificar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
